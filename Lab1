@@ -38,11 +38,11 @@ int main() {
     uint32_t resB = b & c;
 
     // 5. Сравнение результатов
-    bool isEqual = (resA == resB);
+    bool AB = (resA == resB);
     
     cout << "\nA & C (bin): " << bitset<32>(resA) << endl;
     cout << "B & C (bin): " << bitset<32>(resB) << endl;
-    cout << "Comparison: " << (isEqual ? "True" : "False") << endl;
+    cout << "Comparison: " << (AB ? "True" : "False") << endl;
 
     return 0;
 }
