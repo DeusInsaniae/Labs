@@ -3,7 +3,7 @@
 #include <vector>
 #include <bitset>
 #include <sstream>
-#include <cstdint> // Добавлено для поддержки uint32_t
+#include <cstdint>
 
 using namespace std;
 
