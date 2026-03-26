@@ -1,0 +1,30 @@
+#include <iostream>
+#include <list>
+#include <vector>
+
+int main() {
+    // Создаем список с вещественными числами
+    std::list<double> myList = {10.5, 20.0, 30.5, 40.0, 50.5, 60.0};
+
+    // Временный вектор, чтобы хранить старые значения для расчетов
+    // (так как текущие элементы списка будут перезаписываться)
+    std::vector<double> oldValues(myList.begin(), myList.end());
+
+    auto it = myList.begin();
+    for (int i = 0; i < oldValues.size(); ++i) {
+        if (i < 3) {
+            *it = 0.0; // Первые три элемента заменяем на 0
+        } else {
+            // Сумма трех предыдущих элементов из исходного набора
+            *it = oldValues[i - 1] + oldValues[i - 2] + oldValues[i - 3];
+        }
+        ++it;
+    }
+
+    // Вывод результата
+    for (double val : myList) {
+        std::cout << val << " ";
+    }
+
+    return 0;
+}
