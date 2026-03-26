@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <sstream>
+#include <cstdint> // Добавлено для поддержки uint32_t
+
+using namespace std;
+
+// Функция для преобразования IP-строки в число
+uint32_t ipToLong(string ip) {
+    uint32_t res = 0;
+    stringstream ss(ip);
+    string segment;
+    while (getline(ss, segment, '.')) {
+        res = (res << 8) + stoi(segment);
+    }
+    return res;
+}
+
+int main() {
+    // Ввод данных (можно заменить на cin для интерактивности)
+    string strA = "192.168.1.10";
+    string strB = "192.168.1.20";
+    string strC = "255.255.255.0";
+
+    uint32_t a = ipToLong(strA);
+    uint32_t b = ipToLong(strB);
+    uint32_t c = ipToLong(strC);
+
+    // 1-3. Вывод в двоичном виде
+    cout << "A (bin): " << bitset<32>(a) << endl;
+    cout << "B (bin): " << bitset<32>(b) << endl;
+    cout << "C (bin): " << bitset<32>(c) << endl;
+
+    // 4. Поразрядное умножение (AND)
+    uint32_t resA = a & c;
+    uint32_t resB = b & c;
+
+    // 5. Сравнение результатов
+    bool isEqual = (resA == resB);
+    
+    cout << "\nA & C (bin): " << bitset<32>(resA) << endl;
+    cout << "B & C (bin): " << bitset<32>(resB) << endl;
+    cout << "Comparison: " << (isEqual ? "True" : "False") << endl;
+
+    return 0;
+}
